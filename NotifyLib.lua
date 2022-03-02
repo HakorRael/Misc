@@ -6,7 +6,9 @@ local Player = game:GetService("Players").LocalPlayer;
 
 local NotifGui = Instance.new("ScreenGui");
 NotifGui.Name = "Notif";
-syn.protect_gui(NotifGui)
+if syn then
+   syn.protect_gui(NotifGui)
+end
 NotifGui.Parent = game:GetService("CoreGui");
 
 local Container = Instance.new("Frame");
