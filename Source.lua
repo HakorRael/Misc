@@ -1290,17 +1290,19 @@ function library:GetConfigs(universal)
     local placeidfolder = string.format("%s//%s", self.folder, game.PlaceId)
     local universalfolder = self.folder .. "//universal"
 
-    for _, config in next, (isfolder(placeidfolder) and listfiles(placeidfolder) or {}) do
-        local name = config:gsub(placeidfolder .. "\\", ""):gsub("." .. self.extension, "")
-        table.insert(configs, name)
-    end
-
     if universal and isfolder(universalfolder) then
-        for _, config in next, (isfolder(placeidfolder) and listfiles(placeidfolder) or {}) do
+        for _, config in next, (isfolder(universalfolder) and listfiles(universalfolder) or {}) do
             local name = config:gsub(universalfolder .. "\\", ""):gsub("." .. self.extension, "")
             table.insert(configs, name)
         end
+    else
+        for _, config in next, (isfolder(placeidfolder) and listfiles(placeidfolder) or {}) do
+            local name = config:gsub(placeidfolder .. "\\", ""):gsub("." .. self.extension, "")
+            table.insert(configs, name)
+        end
     end
+
+    
 
     return configs
 end
