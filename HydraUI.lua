@@ -3265,10 +3265,10 @@ function UILibrary.new(scriptName, version, gameName, rank)
     local Drag = Draggable.Drag(window.MainUI, Frame)
 
     --// Customize the GUI
-    window.Watermark.Text = ("%s | %s | %s"):format(scriptName, version, gameName)
+    window.Watermark.Text = ("%s | %s | %s | %s"):format(scriptName, version, gameName, rank)
     local userinfo = window.MainUI.Sidebar.ContentHolder.UserInfo.Content
     userinfo.Rank.Text = rank
-    userinfo.Title.Text = userId
+    userinfo.Title.Text = scriptName
 
     return setmetatable(
         {
